@@ -1,5 +1,8 @@
 // import { ChevronDown } from "lucide-react";
 
+import { useState } from "react";
+import UserAssignDropdown from "./CompoundDropdown";
+
 // import { FiCheck, FiChevronDown } from "react-icons/fi";
 
 const usersArray = [
@@ -46,10 +49,25 @@ const usersArray = [
 ];
 
 export default function App() {
+  const [assignedList, setAssignedList] = useState([]);
   return (
     <div className="bg-[#2b2c37] h-[100dvh] text-white flex  p-20 gap-4 items-center flex-col">
       <div className=" w-[400px] ">
-        <h1 className="text-2xl ">My React Dropdown </h1>
+        <h1 className="text-2xl ">Compound Component Pattern</h1>
+        <UserAssignDropdown
+          assignedList={assignedList}
+          setAssignedList={setAssignedList}
+          users={usersArray}>
+          <UserAssignDropdown.Header />
+          {/* <UserAssignDropdown.Button
+            listStyles={
+              "!-left-5 !-translate-x-full bg-[#605e80]  border text-white"
+            }
+            
+          /> */}
+          <UserAssignDropdown.Button />
+          <UserAssignDropdown.AssignedList />
+        </UserAssignDropdown>
       </div>
     </div>
   );
